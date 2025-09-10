@@ -23,11 +23,15 @@ const BASE_PATH = config.BASE_PATH;
 /** --------------------------
  *  Middleware
  --------------------------- */
-const allowedOrigins = [
-  "https://sync-app-server.onrender.com",
-  "http://localhost:3000",
-];
+// const allowedOrigins = [
+//   "https://sync-app-server.onrender.com",
+//   "http://localhost:3000",
+// ];
 
+const allowedOrigins =
+  config.NODE_ENV === "production"
+    ? [config.FRONTEND_ORIGIN]
+    : [config.LOCAL_ORGIN];
 app.use(
   cors({
     origin: (origin, callback) => {

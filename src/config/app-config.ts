@@ -6,6 +6,7 @@ const appConfig = () => ({
   BASE_PATH: getEnv("BASE_PATH", "/api"),
   MONGO_URI: getEnv("DATABASE_URL", ""),
   FRONTEND_ORIGIN: getEnv("FRONTEND_ORIGIN", "http://localhost:3000"),
+  LOCAL_ORGIN: getEnv("LOCAL_ORGIN", "http://localhost:3000"),
 
   // SESSION_SECRET: getEnv("SESSION_SECRET"),
   // SESSION_EXPIRES_IN: getEnv("SESSION_EXPIRES_IN"),

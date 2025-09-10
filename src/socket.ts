@@ -4,11 +4,15 @@ import Message from "./models/messages-model";
 import Channel from "./models/chennel-model";
 import User from "./models/user.model";
 import { MessagesTypes } from "./@types/constants";
+import { config } from "./config/app-config";
 
 const SetupSocket = (server: Server) => {
   const io = new SocketIOServer(server, {
     cors: {
-      origin: ["https://sync-app-server.onrender.com", "http://localhost:3000"],
+      origin:
+        config.NODE_ENV === "production"
+          ? [config.FRONTEND_ORIGIN]
+          : [config.LOCAL_ORGIN],
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
     },
