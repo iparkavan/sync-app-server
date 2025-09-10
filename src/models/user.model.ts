@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { genSalt, hash } from "bcrypt";
+import { genSalt, hash } from "bcryptjs";
 
 interface IUser extends Document {
   email: string;

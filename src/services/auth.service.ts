@@ -1,4 +1,4 @@
-import { compare } from "bcrypt";
+import { compare } from "bcryptjs";
 import User from "../models/user.model";
 import { NotFoundException, UnauthorizedException } from "../utils/appError";
 import jwt from "jsonwebtoken";

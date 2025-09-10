@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userInfoService = exports.signUpService = exports.updateProfileSetupService = exports.loginService = void 0;
-const bcrypt_1 = require("bcrypt");
+const bcryptjs_1 = require("bcryptjs");
 const user_model_1 = __importDefault(require("../models/user.model"));
 const appError_1 = require("../utils/appError");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
@@ -19,7 +19,7 @@ const loginService = async (body) => {
     if (!user) {
         throw new appError_1.NotFoundException("User not found");
     }
-    const auth = await (0, bcrypt_1.compare)(password, user.password);
+    const auth = await (0, bcryptjs_1.compare)(password, user.password);
     if (!auth) {
         throw new appError_1.UnauthorizedException("Invalid email or password");
     }
