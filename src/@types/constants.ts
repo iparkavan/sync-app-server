@@ -6,7 +6,7 @@ export type ExpressHandler = (
   req: Request,
   res: Response,
   next: NextFunction
-) => Promise<any>;
+) => Promise<any> | void;
 
 declare module "express-serve-static-core" {
   interface Request {
