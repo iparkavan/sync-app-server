@@ -10,7 +10,7 @@
     "start": "node dist/index.js"
   },
    "engines": {
-    "node": "22.x"
+    "node": "23.x"
   },
   "keywords": [],
   "author": "",
