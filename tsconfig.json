@@ -9,7 +9,7 @@
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "types": ["node", "express"]
+    // "types": ["node", "express"]
   },
   "include": ["src/**/*.ts", "src/@types/**/*.ts"],
   "exclude": ["node_modules"]
