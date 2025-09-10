@@ -7,13 +7,13 @@ const socket_io_1 = require("socket.io");
 const messages_model_1 = __importDefault(require("./models/messages-model"));
 const chennel_model_1 = __importDefault(require("./models/chennel-model"));
 const user_model_1 = __importDefault(require("./models/user.model"));
+const app_config_1 = require("./config/app-config");
 const SetupSocket = (server) => {
     const io = new socket_io_1.Server(server, {
         cors: {
-            origin: [
-                "https://chat-app-client-rose.vercel.app",
-                "http://localhost:3000",
-            ],
+            origin: app_config_1.config.NODE_ENV === "production"
+                ? [app_config_1.config.FRONTEND_ORIGIN]
+                : [app_config_1.config.LOCAL_ORGIN],
             methods: ["GET", "POST", "PUT", "DELETE"],
             credentials: true,
         },
