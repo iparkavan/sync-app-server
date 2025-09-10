@@ -9,10 +9,7 @@ import { config } from "./config/app-config";
 const SetupSocket = (server: Server) => {
   const io = new SocketIOServer(server, {
     cors: {
-      origin:
-        config.NODE_ENV === "production"
-          ? [config.FRONTEND_ORIGIN]
-          : [config.LOCAL_ORGIN],
+      origin: [config.FRONTEND_ORIGIN, config.LOCAL_ORGIN],
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
     },
