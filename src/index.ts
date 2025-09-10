@@ -24,7 +24,7 @@ const BASE_PATH = config.BASE_PATH;
  *  Middleware
  --------------------------- */
 const allowedOrigins = [
-  "https://chat-app-client-rose.vercel.app",
+  "https://sync-app-server.onrender.com",
   "http://localhost:3000",
 ];
 

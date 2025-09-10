@@ -8,10 +8,7 @@ import { MessagesTypes } from "./@types/constants";
 const SetupSocket = (server: Server) => {
   const io = new SocketIOServer(server, {
     cors: {
-      origin: [
-        "https://chat-app-client-rose.vercel.app",
-        "http://localhost:3000",
-      ],
+      origin: ["https://sync-app-server.onrender.com", "http://localhost:3000"],
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
     },
