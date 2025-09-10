@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const isAuthenticated_middleware_1 = require("../middlewares/isAuthenticated.middleware");
+const channel_controller_1 = require("../controllers/channel.controller");
+const channelRoutes = (0, express_1.Router)();
+channelRoutes.post("/create-channel", isAuthenticated_middleware_1.verifyToken, channel_controller_1.createChannelController);
+channelRoutes.get("/get-user-channels", isAuthenticated_middleware_1.verifyToken, channel_controller_1.getUserChannelsController);
+channelRoutes.get("/get-channel-messages/:channelId", isAuthenticated_middleware_1.verifyToken, channel_controller_1.getChannelMessagesController);
+exports.default = channelRoutes;

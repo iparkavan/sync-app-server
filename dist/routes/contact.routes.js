@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const isAuthenticated_middleware_1 = require("../middlewares/isAuthenticated.middleware");
+const contacts_controller_1 = require("../controllers/contacts.controller");
+const contactRoutes = (0, express_1.Router)();
+contactRoutes.post("/search", isAuthenticated_middleware_1.verifyToken, contacts_controller_1.searchContactsController);
+contactRoutes.get("/get-contact-for-dm", isAuthenticated_middleware_1.verifyToken, contacts_controller_1.getContactsForDmListController);
+contactRoutes.get("/get-all-contacts", isAuthenticated_middleware_1.verifyToken, contacts_controller_1.getAllContactsController);
+exports.default = contactRoutes;
