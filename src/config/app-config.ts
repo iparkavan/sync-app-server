@@ -1,12 +1,12 @@
 import { getEnv } from "../utils/get-env";
 
 const appConfig = () => ({
-  NODE_ENV: getEnv("NODE_ENV", "production"),
+  NODE_ENV: getEnv("NODE_ENV", "development"),
   PORT: getEnv("PORT", "5000"),
   BASE_PATH: getEnv("BASE_PATH", "/api"),
   MONGO_URI: getEnv("DATABASE_URL", ""),
   FRONTEND_ORIGIN: getEnv("FRONTEND_ORIGIN", "http://localhost:3000"),
-  LOCAL_ORGIN: getEnv("LOCAL_ORGIN", "http://localhost:3000"),
+  LOCAL_ORIGIN: getEnv("LOCAL_ORIGIN", "http://localhost:3000"),
 
   // SESSION_SECRET: getEnv("SESSION_SECRET"),
   // SESSION_EXPIRES_IN: getEnv("SESSION_EXPIRES_IN"),

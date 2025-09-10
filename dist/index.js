@@ -23,23 +23,24 @@ const BASE_PATH = app_config_1.config.BASE_PATH;
 /** --------------------------
  *  Middleware
  --------------------------- */
-const allowedOrigins = [app_config_1.config.FRONTEND_ORIGIN, app_config_1.config.LOCAL_ORGIN];
 // const allowedOrigins =
 //   config.NODE_ENV === "production"
 //     ? [config.FRONTEND_ORIGIN]
 //     : [config.LOCAL_ORGIN];
+const allowedOrigins = [app_config_1.config.FRONTEND_ORIGIN, app_config_1.config.LOCAL_ORIGIN];
 app.use((0, cors_1.default)({
     origin: (origin, callback) => {
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         }
         else {
+            console.log("Blocked CORS request from origin:", origin);
             callback(new Error("Not allowed by CORS"));
         }
     },
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
 }));
 app.use("/src/uploads/profiles", express_1.default.static("src/uploads/profiles"));
 app.use("/src/uploads/files", express_1.default.static("src/uploads/files"));

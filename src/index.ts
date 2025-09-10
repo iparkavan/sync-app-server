@@ -23,24 +23,26 @@ const BASE_PATH = config.BASE_PATH;
 /** --------------------------
  *  Middleware
  --------------------------- */
-const allowedOrigins = [config.FRONTEND_ORIGIN, config.LOCAL_ORGIN];
-
 // const allowedOrigins =
 //   config.NODE_ENV === "production"
 //     ? [config.FRONTEND_ORIGIN]
 //     : [config.LOCAL_ORGIN];
+
+const allowedOrigins = [config.FRONTEND_ORIGIN, config.LOCAL_ORIGIN];
+
 app.use(
   cors({
     origin: (origin, callback) => {
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
+        console.log("Blocked CORS request from origin:", origin);
         callback(new Error("Not allowed by CORS"));
       }
     },
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
   })
 );
 
