@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = void 0;
 const get_env_1 = require("../utils/get-env");
 const appConfig = () => ({
-    NODE_ENV: (0, get_env_1.getEnv)("NODE_ENV", "development"),
+    NODE_ENV: (0, get_env_1.getEnv)("NODE_ENV", "production"),
     PORT: (0, get_env_1.getEnv)("PORT", "5000"),
     BASE_PATH: (0, get_env_1.getEnv)("BASE_PATH", "/api"),
     MONGO_URI: (0, get_env_1.getEnv)("DATABASE_URL", ""),
