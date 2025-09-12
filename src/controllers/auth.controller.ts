@@ -1,11 +1,14 @@
 import { ExpressHandler } from "../@types/constants";
 import { HTTPSTATUS } from "../config/http.config";
 import {
+  addProfileImageService,
   loginService,
+  removeProfileImageService,
   signUpService,
   updateProfileSetupService,
   userInfoService,
 } from "../services/auth.service";
+import { BadRequestException } from "../utils/appError";
 import {
   loginSchema,
   profileSetupSchema,
@@ -63,6 +66,30 @@ export const userInfoController: ExpressHandler = async (req, res, next) => {
     message: "Current userInfo  fetched successfully",
     userInfo,
   });
+};
+
+export const addProfileImageController: ExpressHandler = async (
+  req,
+  res,
+  next
+) => {
+  if (!req.file) {
+    throw new BadRequestException("Image File is mandatrory");
+  }
+
+  const { profileImage } = await addProfileImageService(req.file, req.userId!);
+
+  return res.status(HTTPSTATUS.OK).json({
+    profileImage,
+  });
+};
+
+export const removeProfileImageController: ExpressHandler = async (
+  req,
+  res,
+  next
+) => {
+  await removeProfileImageService(req.userId!);
 };
 
 // export const logoutController: ExpressHandler = async (req, res, next) => {};

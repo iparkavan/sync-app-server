@@ -5,7 +5,7 @@ const appConfig = () => ({
   PORT: getEnv("PORT", "5000"),
   BASE_PATH: getEnv("BASE_PATH", "/api"),
   MONGO_URI: getEnv("DATABASE_URL", ""),
-  FRONTEND_ORIGIN: getEnv("FRONTEND_ORIGIN", "http://localhost:3000"),
+  FRONTEND_ORIGIN: getEnv("FRONTEND_ORIGIN", ""),
   LOCAL_ORIGIN: getEnv("LOCAL_ORIGIN", "http://localhost:3000"),
 
   // SESSION_SECRET: getEnv("SESSION_SECRET"),

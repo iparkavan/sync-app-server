@@ -2,6 +2,7 @@ import { compare } from "bcryptjs";
 import User from "../models/user.model";
 import { NotFoundException, UnauthorizedException } from "../utils/appError";
 import jwt from "jsonwebtoken";
+import { renameSync, unlinkSync } from "fs";
 
 const maxAge = 3 * 24 * 60 * 60 * 1000;
 
@@ -92,6 +93,39 @@ export const userInfoService = async (userId: string) => {
   //   profileImage: userInfo.profileImage,
   //   bgColor: userInfo.bgColor,
   // });
+};
+
+export const addProfileImageService = async (
+  file: Express.Multer.File,
+  userId: string
+) => {
+  const date = Date.now();
+
+  let fileName = `src/uploads/profiles/${date}-${file.originalname}`;
+  renameSync(file.path, fileName);
+
+  const updatedUser = await User.findByIdAndUpdate(
+    userId,
+    { profileImage: fileName },
+    { new: true, runValidators: true }
+  );
+  return { profileImage: updatedUser?.profileImage };
+};
+
+export const removeProfileImageService = async (userId: string) => {
+  const user = await User.findById(userId);
+
+  if (!user) {
+    throw new NotFoundException("User not found");
+  }
+
+  if (user.profileImage) {
+    unlinkSync(user.profileImage);
+  }
+
+  user.profileImage = null;
+
+  await user.save();
 };
 
 // import mongoose from "mongoose";
