@@ -54,6 +54,15 @@ app.use(express.json());
 /** --------------------------
  *  Routes
  --------------------------- */
+
+app.get(`${BASE_PATH}/ping`, (req, res) => {
+  res.status(200).send("pong");
+});
+
+app.get(`${BASE_PATH}/health`, (req, res) => {
+  res.json({ status: "ok", uptime: process.uptime() });
+});
+
 app.use(`${BASE_PATH}/auth`, authRoutes);
 
 app.use(`${BASE_PATH}/contacts`, contactRoutes);
